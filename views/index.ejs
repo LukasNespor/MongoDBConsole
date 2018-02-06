@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MongoDB console</title>
+    <link rel='stylesheet' href='/style.css' />
+    <script type="text/javascript" src="/index.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body onload="onLoad()">
+    <div>
+      <input type="text" id="date" placeholder="Date" size="30" />
+      <input type="text" id="convertedDate" placeholder="Converted date in seconds" size="13" />
+      <button onclick="getSecondsFromEpoch()">Convert</button><br />
+
+      <input type="text" id="limit" placeholder="Limit" size="10" value="50" />
+      <input type="text" id="collection" placeholder="Collection name" size="20" value="Alerts" /><br />
+
+      <textarea id="query" rows="2" style="width: 100%;" placeholder="Query">{"Recurring": true}</textarea><br />
+      <textarea id="projection" rows="1" style="width: 100%;" placeholder="Projection">{"_id":0}</textarea><br />
+      
+      <button onclick="executeQuery()">Execute query</button>
+    </div>
+
+    <h3>Results (<span id="count">0</span>)</h3>
+    <pre><code id="result" class="JSON" style="overflow-y: auto; height: 460px;"></code></pre>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
