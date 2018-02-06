@@ -14,7 +14,6 @@
     "mongodb": "^3.0.2",
     "mongodb-extended-json": "^1.10.0",
     "morgan": "~1.9.0",
-    "prettyprint": "^1.1.1",
     "serve-favicon": "~2.4.5"
   }
 }
