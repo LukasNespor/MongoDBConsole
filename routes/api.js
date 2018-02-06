@@ -5,6 +5,14 @@ var MongoClient = require("mongodb").MongoClient;
 var config = require("../config.json");
 
 router.route("/query").post((req, res) => {
+  if (config.connectionString === "") {
+    throw new Error("Missing connection string");
+  }
+  
+  if (config.dbName === "") {
+    throw new Error("Missing database name");
+  }
+
   MongoClient.connect(config.connectionString, function(err, mongoClient) {
     if (err) throw err;
     var db = mongoClient.db(config.dbName);
