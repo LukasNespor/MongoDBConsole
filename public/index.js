@@ -9,16 +9,23 @@ function getSecondsFromEpoch() {
 }
 
 function executeQuery() {
-  var limit = document.getElementById("limit").value;
   var collection = document.getElementById("collection").value;
+  var limit = document.getElementById("limit").value;
   var queryString = document.getElementById("query").value;
   var projectionString = document.getElementById("projection").value;
-  if (projectionString === "" || projectionString === undefined)
-    projectionString = "{}";
+
+  var message = document.getElementById("message");
+  if (collection === "") {
+    message.innerText = "Missing collection name";
+    return;
+  }
+  else { 
+    message.innerText = "";
+  }
 
   var req = new XMLHttpRequest();
   req.onreadystatechange = function() {
-    if (req.readyState == 4 && req.status == 200) {
+    if (req.status == 200) {
       var data = JSON.parse(req.responseText);
       document.getElementById("result").innerText = JSON.stringify(data, null, "  ");
       document.getElementById("count").innerText = data.length;
@@ -26,6 +33,13 @@ function executeQuery() {
       hljs.initHighlighting.called = false;
       hljs.initHighlighting();
     }
+    else if (req.status == 500) {
+      console.log(req);
+      document.getElementById("message").innerText = req.responseText;
+    }
+  };
+  req.onerror = function(err) {
+    document.getElementById("message").innerText = err;
   };
   req.open("POST", "/api/query", true);
   req.setRequestHeader("Content-type", "application/json");
