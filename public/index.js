@@ -31,7 +31,7 @@ function executeQuery() {
   req.setRequestHeader("Content-type", "application/json");
   req.send(JSON.stringify({ 
     collection: collection,
-    limit: limit,
+    limit: limit === "" ? 0 : limit,
     query: queryString,
     projection: projectionString
   }));

@@ -13,11 +13,11 @@
       <input type="text" id="convertedDate" placeholder="Converted date in seconds" size="13" />
       <button onclick="getSecondsFromEpoch()">Convert</button><br />
 
-      <input type="text" id="limit" placeholder="Limit" size="10" value="50" />
-      <input type="text" id="collection" placeholder="Collection name" size="20" value="Alerts" /><br />
+      <input type="text" id="limit" placeholder="Limit" size="10" />
+      <input type="text" id="collection" placeholder="Collection name" size="20" /><br />
 
-      <textarea id="query" rows="2" style="width: 100%;" placeholder="Query">{"Recurring": true}</textarea><br />
-      <textarea id="projection" rows="1" style="width: 100%;" placeholder="Projection">{"_id":0}</textarea><br />
+      <textarea id="query" rows="2" style="width: 100%;" placeholder="Query"></textarea><br />
+      <textarea id="projection" rows="1" style="width: 100%;" placeholder="Projection"></textarea><br />
       
       <button onclick="executeQuery()">Execute query</button>
     </div>
