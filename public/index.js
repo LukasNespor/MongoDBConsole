@@ -1,13 +1,3 @@
-function onLoad() {
-  document.getElementById("date").value = new Date().toISOString();
-  getSecondsFromEpoch();
-}
-
-function getSecondsFromEpoch() {
-  var dateString = document.getElementById("date").value;
-  document.getElementById("convertedDate").value = Math.round(new Date(dateString).getTime()/1000.0);
-}
-
 function executeQuery() {
   var collection = document.getElementById("collection").value;
   var limit = document.getElementById("limit").value;
