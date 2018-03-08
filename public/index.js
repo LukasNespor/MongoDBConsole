@@ -33,10 +33,17 @@ function executeQuery() {
   };
   req.open("POST", "/api/query", true);
   req.setRequestHeader("Content-type", "application/json");
-  req.send(JSON.stringify({ 
-    collection: collection,
-    limit: limit === "" ? 0 : limit,
-    query: queryString,
-    projection: projectionString
-  }));
+
+  try {
+    var data = JSON.stringify({ 
+      collection: collection,
+      limit: limit === "" ? 0 : limit,
+      query: queryString === "" ? "{}" : queryString,
+      projection: projectionString === "" ? "{}" : projectionString
+    });
+    req.send(data);
+  }
+  catch(err) {
+    document.getElementById("message").innerText = err;    
+  }
 }
